@@ -15,9 +15,12 @@ applicant_details = {
 
 
 def get_applicant_details(text:str)->str:
-    name_match = re.search(r"(?:my name is|i am)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)", text, re.IGNORECASE) 
+    #name_match = re.search(r"(?:my name is|i am)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)", text, re.IGNORECASE) 
+    name_match = re.search(r"(?:my name is|i am)\s+([A-Za-z\s\-]+)", text, re.IGNORECASE)
     email_match = re.search(r"\b[\w.-]+@[\w.-]+\.\w+\b", text)  
-    skills_match = re.search(r"(?:skills are|i know|i can use)\s+(.+)", text, re.IGNORECASE)
+    #skills_match = re.search(r"(?:skills are|i know|i can use)\s+(.+)", text, re.IGNORECASE)
+    skills_match = re.search(r"(?:skills are|i know|i can use)\s+([a-zA-Z, ]+)", text, re.IGNORECASE)
+
     response = [] 
 
     if name_match: 
